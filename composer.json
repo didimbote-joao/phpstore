@@ -1,0 +1,22 @@
+{
+    "name": "didimbote_joao/phpstore",
+    "description": "Loja Online em PHP",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "core\\" : "core/"
+        },
+        "files": [
+            "config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "didimbote-joao",
+            "email": "didimbote_joao@outlook.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
