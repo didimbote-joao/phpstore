@@ -33,5 +33,11 @@
             $caracteres = '0123456789abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             return substr(str_shuffle($caracteres), 0, $numero_caracteres); 
        }
+
+       // ======================================================================
+       public static function redirect($rota =''){
+            // Faz o redirecionamento 
+            header("Location: " . BASE_URL . "?a=$rota");
+       }
     }
 ?>

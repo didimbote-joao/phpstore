@@ -8,6 +8,7 @@ use core\classes\Store;
 use core\models\Clientes;
 
     class Main{
+        // ======================================================================
         public function index(){
             
             // Apresenta o inicio da pagina
@@ -96,7 +97,15 @@ use core\models\Clientes;
             $resultado = $email->enviar_email_confirmacao_novoCliente($email_cliente, $purl);
 
             if ($resultado) {
-                echo 'Email enviado';
+                // Conta criada com sucesso, apresenta mensagem para informar o email 
+                Store::Layout([
+                    'layouts/html_header',
+                    'layouts/header',
+                    'criar_cliente_sucesso',
+                    'layouts/footer',
+                    'layouts/html_footer'
+                ]);
+                return;
             }else{
                 echo 'Aconteceu algum erro';
             }
@@ -128,10 +137,24 @@ use core\models\Clientes;
             $resultado = $cliente->validar_email($purl);
 
             if ($resultado) {
-                echo 'Conta verificada com sucesso';
+                // Conta confirmada com sucesso, apresenta mensagem de email confirmado
+                Store::Layout([
+                    'layouts/html_header',
+                    'layouts/header',
+                    'conta_confirmada_sucesso',
+                    'layouts/footer',
+                    'layouts/html_footer'
+                ]);
+                return;
             }else{
-                echo 'Aconteceu algum erro';
+                // Redirecionar o cliente para a pagina inicial
+                Store::redirect('inicio');
             }
+        }
+
+        // ======================================================================
+        public function login(){
+            echo 'Login';
         }
 
         // ======================================================================

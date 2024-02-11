@@ -91,18 +91,6 @@
                 id_cliente = :id_cliente", $parametros);
             
             return true;
-
-            
-
-             /*
-                1. Conectar a BD
-                2. Pesquisar a existencia de um cliente com o purl indicado
-                    Nao existe? ERRO!
-                    Existe?
-                        a. Remover o purl do cliente
-                        b. Alterar o ativo para 1
-                        c. apresentar mensagem de registo concluido
-            */
         }        
     }
 ?>
