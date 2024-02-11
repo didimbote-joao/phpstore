@@ -60,5 +60,49 @@
             // Retorna o purl
             return $purl;
         }
+
+        // ========================================================================
+        public function validar_email($purl){
+            // Validar o email do novo cliente
+           // die('aqui');
+
+            $bd = new Database();
+            $parametros = [':purl' => $purl];
+            $resultados = $bd->Select("SELECT * FROM clientes WHERE purl = :purl", $parametros);
+
+            
+            // Verifica se foi encontrado o cliente
+            if (count($resultados) != 1) {
+                return false;
+            }
+            
+            
+            // Foi encontrado o cliente com o purl indicado
+            $id_cliente = $resultados[0]->id_cliente;
+            
+            // Atualizar os dados do cliente
+            $parametros = [':id_cliente' => $id_cliente];
+            $bd->Update("
+                UPDATE clientes SET 
+                purl = NULL, 
+                activo = 1, 
+                update_at = NOW() 
+                WHERE 
+                id_cliente = :id_cliente", $parametros);
+            
+            return true;
+
+            
+
+             /*
+                1. Conectar a BD
+                2. Pesquisar a existencia de um cliente com o purl indicado
+                    Nao existe? ERRO!
+                    Existe?
+                        a. Remover o purl do cliente
+                        b. Alterar o ativo para 1
+                        c. apresentar mensagem de registo concluido
+            */
+        }        
     }
 ?>

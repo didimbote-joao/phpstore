@@ -103,6 +103,38 @@ use core\models\Clientes;
         }
 
         // ======================================================================
+        public function confirmar_email(){
+            // Verifica se ja existe sessao
+            if (Store::clientelogado()) {
+                $this->index();
+                return;
+            }
+
+            // Verefica se existe na query string um purl
+            if (!isset($_GET['purl'])) {
+                $this->index();
+                return;
+            }
+
+            $purl = $_GET['purl'];
+
+            // Verifica se o purl e' valido 
+            if (strlen($purl) != 12) {
+                $this->index();
+                return;
+            }
+
+            $cliente = new Clientes();
+            $resultado = $cliente->validar_email($purl);
+
+            if ($resultado) {
+                echo 'Conta verificada com sucesso';
+            }else{
+                echo 'Aconteceu algum erro';
+            }
+        }
+
+        // ======================================================================
         public function carrinho(){
             // Apresenta a pagina do carrinho 
             Store::Layout([

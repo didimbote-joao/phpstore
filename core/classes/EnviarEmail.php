@@ -25,6 +25,7 @@
                 $mail->Password   = EMAIL_PASS;                  //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                 $mail->Port       = EMAIL_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                $mail->CharSet    = 'UTF-8';
 
                 //Recipients
                 $mail->setFrom(EMAIL_FROM, APP_NAME);
@@ -63,5 +64,6 @@
                 return false; 
             }
         }
+        
     }
 ?>
