@@ -10,8 +10,7 @@ use core\models\Clientes;
 class Main
 {
     // ======================================================================
-    public function index()
-    {
+    public function index(){
 
         // Apresenta o inicio da pagina
         Store::Layout([
@@ -24,8 +23,7 @@ class Main
     }
 
     // ======================================================================
-    public function loja()
-    {
+    public function loja(){
         // Apresenta a loja 
         Store::Layout([
             'layouts/html_header',
@@ -37,8 +35,7 @@ class Main
     }
 
     // ======================================================================
-    public function novo_cliente()
-    {
+    public function novo_cliente(){
 
         // Verifica se ja existe sessao aberta
         if (Store::clientelogado()) {
@@ -57,8 +54,7 @@ class Main
     }
 
     // ======================================================================
-    public function criar_cliente()
-    {
+    public function criar_cliente(){
         // Verifica se ja existe sessao
         if (Store::clientelogado()) {
             $this->index();
@@ -116,8 +112,7 @@ class Main
     }
 
     // ======================================================================
-    public function confirmar_email()
-    {
+    public function confirmar_email(){
         // Verifica se ja existe sessao
         if (Store::clientelogado()) {
             $this->index();
@@ -158,8 +153,7 @@ class Main
     }
 
     // ======================================================================
-    public function login()
-    {
+    public function login(){
         // Verifica se ja existe cliente logado
         if (Store::clientelogado()) {
             Store::redirect();
@@ -177,14 +171,13 @@ class Main
     }
 
     // ======================================================================
-    public function login_submit()
-    {
+    public function login_submit(){
         // Verifica se ja existe um cliente logado
         if (Store::clientelogado()) {
             Store::redirect();
             return;
         }
-
+       
         // verefica se foi efectua um POST do login
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             Store::redirect();
@@ -203,12 +196,30 @@ class Main
             Store::redirect('login');
             return;
         }
-        echo 'OK!';
+
+        // Prepara os dados para o model
+        $usuario = trim(strtolower($_POST['text_email']));
+        $senha = trim($_POST['text_password']);
+
+        // Carrega o Model e verifica se o login é válido
+        $cliente = new Clientes();
+        $resultado = $cliente->validar_login($usuario, $senha);
+        
+        // Verifica o resultado
+        if (is_bool($resultado)) {
+            // Email ou senha incorrecta
+            $_SESSION['erro'] = 'Login inválido';
+            Store::redirect('login');
+            return;
+        }else{
+            // O login é válido
+            echo '<pre>';
+            print_r($resultado);
+        }
     }
 
     // ======================================================================
-    public function carrinho()
-    {
+    public function carrinho(){
         // Apresenta a pagina do carrinho 
         Store::Layout([
             'layouts/html_header',

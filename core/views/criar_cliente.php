@@ -43,19 +43,6 @@
                     </div>
                 <?php endif; ?>
             </form>
-
-            
         </div>
     </div>
 </div>
-
-<!--
-email*
-senha1*
-senha2*
-nome_completo*
-morada*
-cidade*
-telefone*
-
--->

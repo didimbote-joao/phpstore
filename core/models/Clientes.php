@@ -91,6 +91,43 @@
                 id_cliente = :id_cliente", $parametros);
             
             return true;
-        }        
+        }   
+        
+        // ========================================================================
+        public function validar_login($usuario, $senha){
+            // Verifica se o login é válido
+
+            $db = new Database();
+            $parametros = [
+                ':usuario' => $usuario
+            ];
+            
+            // Seleciona o cliente se o mesmo tiver todas as condições necessárias para o login
+            $resultados = $db->Select("
+                SELECT * FROM clientes
+                WHERE email = :usuario
+                AND activo = 1
+                AND deleted_at IS NULL
+            ", $parametros);
+
+            if (count($resultados) != 1) {
+                // Usuario sem condições para o login, ou seja, não existe usuário
+                return false;
+            }else{
+                // Usuario com todas as condições para o login
+                // Tem usuário, vamos verifica a senha
+                $usuario = $resultados[0];
+
+                // Verificar a senha
+                if (!password_verify($senha, $usuario->senha)) {
+                    # Senha incorrecta
+                    return false;
+                }else{
+                    // Login válido
+                    return $usuario;
+                }
+                
+            }
+        }
     }
 ?>
