@@ -212,10 +212,27 @@ class Main
             Store::redirect('login');
             return;
         }else{
-            // O login é válido
-            echo '<pre>';
-            print_r($resultado);
+            // O login é válido. Coloca os dados na sessão
+            $_SESSION['cliente'] = $resultado->id_cliente;
+            $_SESSION['usuario'] = $resultado->email;
+            $_SESSION['nome_cliente'] = $resultado->nome_completo;
+
+            // Redireccionar para a loja
+            Store::redirect();
+            return;
         }
+    }
+
+    // ======================================================================
+    public function logout(){
+        // Remove/Encerra a sessão
+        unset($_SESSION['cliente'] );
+        unset($_SESSION['usuario'] );
+        unset($_SESSION['nome_cliente'] );
+
+        // Redireccionar para a loja
+        Store::redirect();
+        return;
     }
 
     // ======================================================================

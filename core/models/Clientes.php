@@ -125,8 +125,7 @@
                 }else{
                     // Login válido
                     return $usuario;
-                }
-                
+                }   
             }
         }
     }

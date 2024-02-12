@@ -17,15 +17,16 @@
             <!-- Verifica se existe cliente na sessao -->
 
             <?php if (Store::clientelogado()): ?>
-                <a href="" class="nav-item">A minha conta</a>
-                <a href="" class="nav-item">Logout</a>
+                <!-- <a href="" class="nav-item">A minha conta</a> -->
+                <i class="fas fa-user"></i> <?=$_SESSION['usuario'];?>
+                <a href="?a=logout" class="nav-item"><i class="fas fa-sign-out-alt"></i></a>
             <?php else: ?>
                 <a href="?a=login" class="nav-item">Login</a>
                 <a href="?a=novo_cliente" class="nav-item">Criar conta</a>
 
             <?php endif;?>
             <a href="?a=carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
-            <span class="bagde bg-warning">100</span>
+            <span class="bagde bg-warning"></span>
         </div>
     </div>
 </div>
