@@ -35,7 +35,7 @@
        }
 
        // ======================================================================
-       public static function redirect($rota =''){
+       public static function redirect($rota ='inicio'){
             // Faz o redirecionamento 
             header("Location: " . BASE_URL . "?a=$rota");
        }
