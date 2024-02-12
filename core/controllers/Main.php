@@ -1,11 +1,12 @@
 <?php
 
-namespace core\controllers;
+    namespace core\controllers;
 
-use core\classes\Database;
-use core\classes\EnviarEmail;
-use core\classes\Store;
-use core\models\Clientes;
+    use core\classes\Database;
+    use core\classes\EnviarEmail;
+    use core\classes\Store;
+    use core\models\Clientes;
+    use core\models\Produtos;
 
 class Main
 {
@@ -25,6 +26,12 @@ class Main
     // ======================================================================
     public function loja(){
         // Apresenta a loja 
+
+        // Carrega os produtos para apresentar na loja
+        $produtos = new Produtos();
+        $listar_produtos = $produtos->listar_produto_visivel();
+        Store::print_data($listar_produtos);
+        
         Store::Layout([
             'layouts/html_header',
             'layouts/header',
