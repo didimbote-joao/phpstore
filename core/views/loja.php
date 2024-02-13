@@ -13,10 +13,9 @@
     <?php foreach($produtos as $produto): ?>
         <div class="col-sm-4">
             <div class="text-center p-3">
-                <img class="img-fluid"   src="assets/images/produtos/<?= $produto->imagem;?>" >
+                <img class="img-fluid" src="assets/images/produtos/<?= $produto->imagem;?>" >
                <p><?=$produto->nome_produto;?></p>
                <p><?=$produto->preco;?></p>
-               <p><small><?=$produto->descricao;?></small></p>
                <div>
                 <button>Adicionar ao carrinho</button>
                </div>
