@@ -30,15 +30,16 @@ class Main
         // Carrega os produtos para apresentar na loja
         $produtos = new Produtos();
         $listar_produtos = $produtos->listar_produto_visivel();
-        Store::print_data($listar_produtos);
-        
+       
+        // Store::print_data($listar_produtos);
+
         Store::Layout([
             'layouts/html_header',
             'layouts/header',
             'loja',
             'layouts/footer',
             'layouts/html_footer'
-        ]);
+        ], ['produtos' => $listar_produtos]);
     }
 
     // ======================================================================
