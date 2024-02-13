@@ -29,7 +29,13 @@ class Main
 
         // Carrega os produtos para apresentar na loja
         $produtos = new Produtos();
-        $listar_produtos = $produtos->listar_produto_visivel();
+
+        // Analisa que categoria mostrar
+        $categoria = 'todos';
+        if ($_GET['c']) {
+            $categoria = $_GET['c'];
+        }
+        $listar_produtos = $produtos->listar_produto_visivel($categoria);
        
         // Store::print_data($listar_produtos);
 

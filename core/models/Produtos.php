@@ -5,12 +5,18 @@
 
     class Produtos{
         // ===============================================================
-        public function listar_produto_visivel(){
+        public function listar_produto_visivel($categoria){
             // Buscar todas as informações dos produtos da base dados
             $bd = new Database();
-            $produtos = $bd->Select("
-            SELECT * FROM produtos
-            WHERE visivel = 1 ");
+
+            //Construção da query select
+            $sql = "SELECT * FROM produtos WHERE visivel = 1 ";
+
+            if ($categoria == 'homem' || $categoria == 'mulher') {
+                $sql .= "AND categoria = '$categoria'";
+            }
+            
+            $produtos = $bd->Select($sql);
 
             return $produtos;
         }

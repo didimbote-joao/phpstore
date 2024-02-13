@@ -3,8 +3,10 @@
 <div class="container espaco-fundo">
    <!-- Titulo -->
     <div class="row">
-        <div class="col-12">
-            <h3>Loja</h3>
+        <div class="col-12 text-center my-3">
+            <a href="?a=loja&c=todos" class="btn btn-primary">Produtos</a>
+            <a href="?a=loja&c=homem" class="btn btn-warning">Homem</a>
+            <a href="?a=loja&c=mulher" class="btn btn-success">Mulher</a>
         </div>
     </div>
     <!-- Produtos -->
