@@ -5,25 +5,35 @@
     <div class="row">
         <div class="col-12 text-center my-3">
             <a href="?a=loja&c=todos" class="btn btn-primary">Produtos</a>
-            <a href="?a=loja&c=homem" class="btn btn-warning">Homem</a>
-            <a href="?a=loja&c=mulher" class="btn btn-success">Mulher</a>
+            <?php foreach ($categorias as $categoria):?>
+                <a href="?a=loja&c=<?=$categoria?>" class="btn btn-primary">
+                    <?=ucfirst($categoria);?>
+                </a>
+            <?php endforeach;?>
         </div>
     </div>
-    <!-- Produtos -->
+    <!-- Final titulo -->
+    
+    <!-- Exibe Produtos -->
     
     <div class="row">
-    <?php foreach($produtos as $produto): ?>
-        <div class="col-sm-4 col-6 p-2">
-            <div class="text-center p-3 box-produto">
-                <img class="img-fluid" src="assets/images/produtos/<?= $produto->imagem;?>" >
-               <p><?=$produto->nome_produto;?></p>
-               <p><?=$produto->preco;?></p>
-               <div>
-                <button>Adicionar ao carrinho</button>
-               </div>
+        <?php if(count($produtos) == 0):?>
+            <h3>Nao tem produtos</h3>
+        <?php else:?>
+        
+            <?php foreach($produtos as $produto): ?>
+            <div class="col-sm-4 col-6 p-2">
+                <div class="text-center p-3 box-produto">
+                    <img class="img-fluid" src="assets/images/produtos/<?= $produto->imagem;?>" >
+                <p><?=$produto->nome_produto;?></p>
+                <p><?=$produto->preco;?></p>
+                <div>
+                    <button class="btn btn-success">Adicionar ao carrinho</button>
+                </div>
+                </div>
             </div>
-        </div>
         <?php endforeach;?>
+        <?php endif;?>
     </div>
 </div>
 

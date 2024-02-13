@@ -32,10 +32,22 @@ class Main
 
         // Analisa que categoria mostrar
         $categoria = 'todos';
-        if ($_GET['c']) {
+
+        if (isset($_GET['c'])) {
             $categoria = $_GET['c'];
         }
+        // if ($_GET['c']) {
+        //     $categoria = $_GET['c'];
+        // }
+
+        // Busca informações à base de dados
         $listar_produtos = $produtos->listar_produto_visivel($categoria);
+        $lista_categorias = $produtos->lista_categoria();
+        
+        $dados = [
+            'produtos' => $listar_produtos,
+            'categorias' => $lista_categorias
+        ];
        
         // Store::print_data($listar_produtos);
 
@@ -45,7 +57,7 @@ class Main
             'loja',
             'layouts/footer',
             'layouts/html_footer'
-        ], ['produtos' => $listar_produtos]);
+        ], $dados);
     }
 
     // ======================================================================
