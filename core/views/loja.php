@@ -1,6 +1,6 @@
 <?php //$produto = $produtos[0]; ?>
 
-<div class="container-fluid espaco-fundo">
+<div class="container espaco-fundo">
    <!-- Titulo -->
     <div class="row">
         <div class="col-12">
@@ -11,8 +11,8 @@
     
     <div class="row">
     <?php foreach($produtos as $produto): ?>
-        <div class="col-sm-4">
-            <div class="text-center p-3">
+        <div class="col-sm-4 col-6 p-2">
+            <div class="text-center p-3 box-produto">
                 <img class="img-fluid" src="assets/images/produtos/<?= $produto->imagem;?>" >
                <p><?=$produto->nome_produto;?></p>
                <p><?=$produto->preco;?></p>

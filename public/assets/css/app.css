@@ -22,3 +22,7 @@
 .espaco-fundo{
     margin-bottom: 60px;
 }
+.box-produto{
+    border: 1px solid rgba(155, 155, 155, 0.5);
+    border-radius: 10px;
+}
