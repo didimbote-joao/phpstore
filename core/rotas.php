@@ -5,9 +5,11 @@
         'inicio' => 'main@index',
         'loja' => 'main@loja',
         
-        // clientes
-        'carrinho' => 'main@carrinho',
+        // carrinho
+        'adicionar_carrinho' => 'carrinho@adicionar_carrinho',
+        'carrinho' => 'carrinho@carrinho',
 
+        // clientes
         'novo_cliente' => 'main@novo_cliente',
         'criar_cliente' => 'main@criar_cliente', 
         'confirmar_email' => 'main@confirmar_email',

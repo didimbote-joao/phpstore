@@ -1,4 +1,6 @@
-<?php //$produto = $produtos[0]; ?>
+<?php //$produto = $produtos[0]; 
+    print_r($_SESSION);
+?>
 
 <div class="container espaco-fundo">
    <!-- Titulo -->
@@ -25,10 +27,10 @@
             <div class="col-sm-4 col-6 p-2">
                 <div class="text-center p-3 box-produto">
                     <img class="img-fluid" src="assets/images/produtos/<?= $produto->imagem;?>" >
-                <p><?=$produto->nome_produto;?></p>
-                <p><?=$produto->preco;?></p>
+                    <h3><?=$produto->nome_produto;?></h3>
+                    <h2><?=preg_replace("/\./", ",", $produto->preco) . " $";?></h2>
                 <div>
-                    <button class="btn btn-success">Adicionar ao carrinho</button>
+                    <button class="btn btn-success btn-sm" onclick="adicionar_carrinho(<?=$produto->id_produto;?>)"> <i class="fas fa-cart-shopping me-2"></i>Adicionar ao carrinho</button>
                 </div>
                 </div>
             </div>
