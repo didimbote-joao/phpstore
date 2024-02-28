@@ -8,6 +8,6 @@ function adicionar_carrinho(id_produto) {
     axios.get("?a=adicionar_carrinho&id_produto=" + id_produto)
         //resposta
         .then(function(response){
-            console.log(response)
+            console.log(response.data)
         })
 }

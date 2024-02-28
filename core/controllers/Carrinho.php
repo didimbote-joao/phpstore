@@ -31,22 +31,22 @@
             // Adicionar o produto ao carrinho
             if (key_exists($id_produto, $carrinho)) {
                 # Ja existe o produto no carrinho
-                $carrinho[$id_produto];
+                $carrinho[$id_produto] = $carrinho[$id_produto] + 1;
             } else{
                 // Adiciona o novo produto ao carrinho
-                array_push($carrinho, [$id_produto=>1]);
+                $carrinho[$id_produto] = 1;
             }
 
             // Actualiza os dados do carrinho na SESSAO
             $_SESSION['carrinho'] = $carrinho;
 
             // Devolve a resposta (numero de produtos no carrinho)
-            $total_quantidade = 0;
+            $total_produtos = 0;
             foreach ($carrinho as $produto_quantidade) {
-                $total_quantidade += $produto_quantidade;
+                $total_produtos += $produto_quantidade;
             }
 
-            echo 'Adicionado o produto ' . $id_produto . ' ao carrinho';
+            echo $total_produtos;
         }
         // ======================================================================
         public function carrinho(){
