@@ -26,7 +26,7 @@
 
             <?php endif;?>
             <a href="?a=carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
-            <span class="bagde bg-warning"></span>
+            <span class="bagde bg-warning" id="carrinhooo"></span>
         </div>
     </div>
 </div>
