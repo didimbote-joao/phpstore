@@ -1,5 +1,5 @@
 <?php //$produto = $produtos[0]; 
-    print_r($_SESSION);
+   // print_r($_SESSION);
 ?>
 
 <div class="container espaco-fundo">

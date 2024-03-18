@@ -1,6 +1,13 @@
 <?php 
     use core\classes\Store;
     
+    // Total de produtos no carrinho
+    $total_produto = 0;
+    if (isset($_SESSION['carrinho'])) {
+        foreach($_SESSION['carrinho'] as $quantidade){
+            $total_produto += $quantidade;
+        }
+    }
 ?>
 
 <div class="container-fluid navegacao">
@@ -26,7 +33,8 @@
 
             <?php endif;?>
             <a href="?a=carrinho"><i class="fa-solid fa-cart-shopping"></i></a>
-            <span class="bagde bg-warning" id="carrinhooo"></span>
+            <!-- Condicao para apresentar a quantidade no carrinho-->
+            <span class="bagde bg-warning" id="carrinhooo"><?= $total_produto == 0 ? '' : $total_produto  ?></span>
         </div>
     </div>
 </div>
