@@ -8,6 +8,7 @@
         // carrinho
         'adicionar_carrinho' => 'carrinho@adicionar_carrinho',
         'carrinho' => 'carrinho@carrinho',
+        'limpar_carrinho' => 'carrinho@limpar_carrinho',
 
         // clientes
         'novo_cliente' => 'main@novo_cliente',

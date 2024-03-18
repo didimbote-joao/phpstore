@@ -59,6 +59,14 @@
                 'layouts/html_footer'
             ]);
         }
+
+        // ======================================================================
+        public function limpar_carrinho(){
+            // Limpa o array, ou seja, arrzy vazio
+
+            $_SESSION['carrinho'] = [];
+            echo 'OK';
+        }
     }
 
 ?>
