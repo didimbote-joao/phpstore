@@ -28,9 +28,7 @@
         // ===============================================================
         public function lista_categoria(){
             // Devolve a lista de categoria da tabela produto
-
             $bd = new Database();
-
             $resultados =$bd->Select("SELECT DISTINCT categoria FROM produtos");
 
             // Array criado pra armazenar o resultado do select
@@ -43,6 +41,20 @@
             
             // Retornando as categorias
             return $categorias;
+        }
+
+        // ===============================================================
+        public function verificar_stock_produto($id_produto){
+            $bd = new Database();
+            $parametros = [
+                ':id_produto' => $id_produto
+            ];
+            $resultados = $bd->Select("
+            SELECT * FROM produtos WHERE id_produto = :id_produto
+            AND visivel = 1 and stock > 0
+            ",$parametros);
+
+            return count($resultados) != 0 ? true : false;
         }
     }
 ?>

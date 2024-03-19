@@ -13,16 +13,22 @@
         // ======================================================================
         public function adicionar_carrinho(){
             // Vai buscar o id do produto a query string
+
+            if (!isset($_GET['id_produto'])) {
+                header('Location: ' . BASE_URL . 'index.php?a-loja');
+                return;
+            }
+
+            // Define o id do produto
             $id_produto = $_GET['id_produto'];
 
-            //adiciona/gestao da variavel de SESSAO do carrinho
-
-            /*
-                1. Puxar o array do carrinho da sessao para o PHP (interior do codigo)
-                2. Vou adicionar/gerir o array do carrinho
-                3. Recolocar o array sessao
-            */
-
+            // Verifica se o produto existe e se tem stock
+            $produto = new Produtos();
+            $resultados = $produto->verificar_stock_produto($id_produto);
+            if (!$resultados) {
+                header('Location: ' . BASE_URL . 'index.php?a-loja');
+                return;
+            }
             $carrinho = [];
             if (isset($_SESSION['carrinho'])) {
                 $carrinho = $_SESSION['carrinho'];
@@ -62,11 +68,10 @@
 
         // ======================================================================
         public function limpar_carrinho(){
-            // Limpa o array, ou seja, arrzy vazio
+            // Eliminar a sessao do carrinho
             unset($_SESSION['carrinho']);
             // refrescar a pagina
             $this->carrinho();
         }
     }
-
 ?>
