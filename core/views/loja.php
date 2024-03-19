@@ -30,7 +30,12 @@
                     <h3><?=$produto->nome_produto;?></h3>
                     <h2><?=preg_replace("/\./", ",", $produto->preco) . " $";?></h2>
                 <div>
-                    <button class="btn btn-success btn-sm" onclick="adicionar_carrinho(<?=$produto->id_produto;?>)"> <i class="fas fa-cart-shopping me-2"></i>Adicionar ao carrinho</button>
+                    <?php if($produto->stock > 1):?>
+                        <button class="btn btn-success btn-sm" onclick="adicionar_carrinho(<?=$produto->id_produto;?>)"> <i class="fas fa-cart-shopping me-2"></i>Adicionar ao carrinho</button>
+                    <?php else : ?>
+                        <button class="btn btn-danger btn-sm"> <i class="fas fa-cart-shopping me-2"></i>Sem stock</button>
+                    <?php endif; ?>
+                    
                 </div>
                 </div>
             </div>
