@@ -16,20 +16,3 @@ function adicionar_carrinho(id_produto) {
             document.getElementById('carrinhooo').innerText = total_produtos;
         })
 }
-
-//=======================================================================
-function limpar_carrinho() {
-    // Limpar o carrinho
-
-     // Informa ao AXIO para trabalhar com toda legitimidade
-     axios.defaults.withCredentials = true;
-
-     // Chamada de AXAX (pedido)
-     axios.get("?a=limpar_carrinho")
-         //resposta
-         .then(function(response){
-             // console.log(response.data)
- 
-             document.getElementById('carrinhooo').innerText = 0;
-         })
-}

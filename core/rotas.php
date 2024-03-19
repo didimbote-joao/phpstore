@@ -43,5 +43,4 @@
 
     $ctr = new $controlador();
     $ctr->$metodo();
-
 ?>

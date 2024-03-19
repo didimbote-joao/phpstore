@@ -63,9 +63,9 @@
         // ======================================================================
         public function limpar_carrinho(){
             // Limpa o array, ou seja, arrzy vazio
-
-            $_SESSION['carrinho'] = [];
-            echo 'OK';
+            unset($_SESSION['carrinho']);
+            // refrescar a pagina
+            $this->carrinho();
         }
     }
 
