@@ -58,6 +58,17 @@
         }
         // ======================================================================
         public function carrinho(){
+            
+            if (!isset($_SESSION['carrinho']) || count($_SESSION['carrinho']) == 0) {
+                $dados = [
+                    'carrinho' => null,
+                ];
+            } else{
+                $dados = [
+                    'carrinho' => 1,
+                ];
+            }
+            
             // Apresenta a pagina do carrinho 
             Store::Layout([
                 'layouts/html_header',
@@ -65,7 +76,7 @@
                 'carrinho',
                 'layouts/footer',
                 'layouts/html_footer'
-            ]);
+            ], $dados);
         }
 
         // ======================================================================
