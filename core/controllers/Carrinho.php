@@ -15,7 +15,7 @@
             // Vai buscar o id do produto a query string
 
             if (!isset($_GET['id_produto'])) {
-                header('Location: ' . BASE_URL . 'index.php?a-loja');
+                echo isset($_SESSION['carrinho']) ? count($_SESSION['carrinho']) : '';
                 return;
             }
 
@@ -26,9 +26,11 @@
             $produto = new Produtos();
             $resultados = $produto->verificar_stock_produto($id_produto);
             if (!$resultados) {
-                header('Location: ' . BASE_URL . 'index.php?a-loja');
+                // Verifica se existe sessao carrinho e retorna seu valor ou vazio caso nao exista
+                echo isset($_SESSION['carrinho']) ? count($_SESSION['carrinho']) : '';
                 return;
             }
+            
             $carrinho = [];
             if (isset($_SESSION['carrinho'])) {
                 $carrinho = $_SESSION['carrinho'];
