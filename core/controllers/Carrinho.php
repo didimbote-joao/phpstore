@@ -64,6 +64,24 @@
                     'carrinho' => null,
                 ];
             } else{
+
+                 /*
+                    Ir buscar a bd os dados dos produtos existentes no carrinho
+                    criar um ciclo que constroi a estrutura dos dados para ocarrinho
+                    */
+
+                $ids = [];
+                // busca simultaneamente a chave e o seu valor (id_produto e a qtd)
+                foreach($_SESSION['carrinho'] as $key=>$value){
+                    array_push($ids, $key);
+                }
+
+                $ids = implode(",", $ids);
+                $produto = new Produtos();
+                $resultados = $produto->buscar_produto_por_id($ids);
+
+                Store::print_data($resultados);
+                
                 $dados = [
                     'carrinho' => 1,
                 ];

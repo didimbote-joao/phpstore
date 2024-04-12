@@ -56,5 +56,15 @@
 
             return count($resultados) != 0 ? true : false;
         }
+
+
+        public function buscar_produto_por_id($ids){
+            $bd = new Database();
+            // die($ids);
+            
+            return $bd->Select("
+                SELECT * FROM produtos WHERE id_produto IN ($ids)
+            ");
+        }
     }
 ?>

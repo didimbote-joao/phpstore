@@ -12,7 +12,11 @@
                             <p>Carrinho vazio</p>
                             <a href="?a=loja" class="btn btn-sm btn-primary">Loja</a>
                         <?php else:?>
-                            <p>Carrinho...</p>
+                            <pre>
+                                <?php
+                                    print_r($_SESSION);
+                                ?>
+                            </pre>
                         <?php endif;?>
                      </div>
                 </div>
